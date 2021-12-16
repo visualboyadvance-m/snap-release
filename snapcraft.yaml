@@ -57,8 +57,8 @@ parts:
     plugin: cmake
     stage-packages:
       - libsdl2-2.0-0
-      - libsfml-network2.4
-      - libsfml-system2.4
+      - libsfml-network2.5
+      - libsfml-system2.5
       - libnotify4
       - libsm6
       - libopenal1
