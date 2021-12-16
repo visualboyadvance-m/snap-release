@@ -84,7 +84,7 @@ parts:
       - libsfml-dev
       - libgtk-3-dev
       - libopenal-dev
-    configflags:
+    cmake-parameters:
       - -DENABLE_OPENAL=ON
       - -DENABLE_SDL=OFF
       - -DCMAKE_INSTALL_PREFIX=/usr
