@@ -34,6 +34,7 @@ parts:
    desktop-gtk3:
    wxwidgets-3-0-gtk3:
   vbam:
+  
     source: https://github.com/visualboyadvance-m/visualboyadvance-m/archive/v2.1.4.tar.gz
     plugin: cmake
     stage-packages:
