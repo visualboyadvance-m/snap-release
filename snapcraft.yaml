@@ -1,5 +1,5 @@
 name: visualboyadvance-m
-version: 2.1.7
+version: 2.1.8
 summary: Nintendo Game Boy Advance Emulator
 description: |
   An open-source Nintendo Game Boy, Super Game Boy, Game Boy Advance Emulators.
@@ -7,6 +7,13 @@ description: |
 grade: stable
 confinement: strict
 base: core22
+
+package-repositories:
+  - type: apt
+    components: [universe]
+    suites: [jammy]
+    key-id: 7716412FB5B50060D47CF42B6856E1DB1AC82609
+    url: https://repos.codelite.org/wx3.2.1/ubuntu/
 
 architectures:
   - build-on: amd64
@@ -16,7 +23,10 @@ architectures:
 
 parts:
   vbam:
-    source: https://github.com/visualboyadvance-m/visualboyadvance-m/archive/v2.1.7.tar.gz
+    source: https://github.com/visualboyadvance-m/visualboyadvance-m/archive/v2.1.8.tar.gz
+    override-build: |
+      snapcraftctl build
+      sed -i.bak -e 's|Icon=visualboyadvance-m|Icon=/usr/share/icons/hicolor/scalable/apps/visualboyadvance-m.svg|g' /root/parts/vbam/install/usr/share/applications/visualboyadvance-m.desktop
     plugin: cmake
     stage-packages:
       - libsdl2-2.0-0
@@ -33,7 +43,7 @@ parts:
       - libglvnd0
       - libglx0
       - libopengl0
-      - libwxgtk3.0-gtk3-0v5
+      - libwxgtk3.2-0-unofficial
 
     build-packages:
       - g++
@@ -48,7 +58,7 @@ parts:
       - libsfml-dev
       - libgtk-3-dev
       - libopenal-dev
-      - libwxgtk3.0-gtk3-dev
+      - libwxgtk3.2unofficial-dev
     cmake-parameters:
       - -DENABLE_OPENAL=ON
       - -DENABLE_SDL=OFF
